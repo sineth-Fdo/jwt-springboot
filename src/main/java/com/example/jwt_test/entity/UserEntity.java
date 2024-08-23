@@ -28,10 +28,10 @@ public class UserEntity {
     private String role;
 
 
-    public UserEntity(String name, String email, String password, String role) {
+    public UserEntity(String name, String email, String encode, String role) {
         this.name = name;
         this.email = email;
-        this.password = password;
+        this.password = encode;
         this.role = role;
     }
 }
