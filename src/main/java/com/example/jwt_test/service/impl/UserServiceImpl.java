@@ -5,7 +5,7 @@ import com.example.jwt_test.entity.UserEntity;
 import com.example.jwt_test.repository.UserRepository;
 import com.example.jwt_test.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-//import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -15,18 +15,18 @@ public class UserServiceImpl implements UserService {
     private UserRepository userRepository;
 
 
-//    @Autowired
-//    private PasswordEncoder passwordEncoder;
+    @Autowired
+    private PasswordEncoder passwordEncoder;
 
     @Override
     public String registerUser(UserDto userDto) {
         try {
-//            String encodedPassword = passwordEncoder.encode(userDto.getPassword());
+            String encodedPassword = passwordEncoder.encode(userDto.getPassword());
 
             UserEntity userEntity = new UserEntity(
                     userDto.getName(),
                     userDto.getEmail(),
-                    userDto.getPassword(),
+                    encodedPassword,
                     userDto.getRole()
             );
 
